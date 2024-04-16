@@ -10,3 +10,4 @@ azure-cosmos
 streamlit-feedback
 snowflake
 boto3
+PyPDF2
