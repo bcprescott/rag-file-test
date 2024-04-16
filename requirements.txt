@@ -9,3 +9,4 @@ msal-streamlit-authentication
 azure-cosmos
 streamlit-feedback
 snowflake
+boto3
