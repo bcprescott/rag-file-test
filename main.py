@@ -87,10 +87,7 @@ if aws_key:
         if prompt := st.chat_input("Enter your question"):
             st.session_state.messages.append({"role": "user", "content": prompt})
             st.chat_message("user").write(prompt)
-            # prompt_data = "\nInstructions: " + instructions + "\n\nHuman: " + prompt + "\n\nAssistant: "
             modelId = "anthropic.claude-3-sonnet-20240229-v1:0" 
-            # prompt_data = "\n\nHuman: " + prompt + "\n\nAssistant: "
-            # body = json.dumps({"prompt": prompt_data, "max_tokens_to_sample": 300, "temperature": 0.1, "top_p": 0.9})
             body = json.dumps({
                     "max_tokens": 256,
                     "messages": [{"role": "user", "content": prompt}],
@@ -101,9 +98,7 @@ if aws_key:
             response = bedrock.invoke_model(body=body, modelId=modelId, accept=accept, contentType=contentType)
             response_body = json.loads(response.get('body').read())
             output = response_body.get('content')[0]['text']
-            # print(requests.post(URL,data=BODY, params=PARAMS))
             st.session_state.messages.append({"role": "assistant", "content": output})
-            # st.chat_message("assistant").write_stream(stream_data(response['content']))
             st.chat_message("assistant").write(output)
     else:
         if prompt := st.chat_input("Enter your question"):
@@ -113,10 +108,7 @@ if aws_key:
                 pagetext.append(page.extract_text())
             st.session_state.messages.append({"role": "user", "content": prompt})
             st.chat_message("user").write(prompt)
-            # prompt_data = "\nInstructions: " + instructions + "\n\nHuman: " + prompt + "\n\nAssistant: "
             modelId = "anthropic.claude-3-sonnet-20240229-v1:0" 
-            # prompt_data = "\n\nHuman: " + prompt + "\n\nAssistant: "
-            # body = json.dumps({"prompt": prompt_data, "max_tokens_to_sample": 300, "temperature": 0.1, "top_p": 0.9}
             fullprompt = ' '.join(pagetext) + f"\n\n Using the above text, answer this question: {prompt}"
 
             body = json.dumps({
@@ -129,31 +121,6 @@ if aws_key:
             response = bedrock.invoke_model(body=body, modelId=modelId, accept=accept, contentType=contentType)
             response_body = json.loads(response.get('body').read())
             output = response_body.get('content')[0]['text']
-            # print(requests.post(URL,data=BODY, params=PARAMS))
             st.session_state.messages.append({"role": "assistant", "content": output})
-            # st.chat_message("assistant").write_stream(stream_data(response['content']))
             st.chat_message("assistant").write(output)
-        # st.write(len(reader.pages))
-        # if prompt := st.chat_input("Enter your question"):
-        #     st.session_state.messages.append({"role": "user", "content": prompt})
-        #     st.chat_message("user").write(prompt)
-        #     # prompt_data = "\nInstructions: " + instructions + "\n\nHuman: " + prompt + "\n\nAssistant: "
-        #     modelId = "anthropic.claude-3-sonnet-20240229-v1:0" 
-        #     # prompt_data = "\n\nHuman: " + prompt + "\n\nAssistant: "
-        #     # body = json.dumps({"prompt": prompt_data, "max_tokens_to_sample": 300, "temperature": 0.1, "top_p": 0.9})
-        #     body = json.dumps({
-        #             "max_tokens": 256,
-        #             "messages": [{"role": "user", "content": prompt}],
-        #             "anthropic_version": "bedrock-2023-05-31"
-        #             })
-        #     accept = '*/*'
-        #     contentType = 'application/json'
-        #     response = bedrock.invoke_model(body=body, modelId=modelId, accept=accept, contentType=contentType)
-        #     response_body = json.loads(response.get('body').read())
-        #     output = response_body.get('content')[0]['text']
-        #     # print(requests.post(URL,data=BODY, params=PARAMS))
-        #     st.session_state.messages.append({"role": "assistant", "content": output})
-        #     # st.chat_message("assistant").write_stream(stream_data(response['content']))
-        #     st.chat_message("assistant").write(output)
 
-    
