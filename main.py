@@ -46,7 +46,7 @@ session = boto3.Session(
 bedrock = session.client(service_name='bedrock-runtime', region_name='us-west-2')
 
 # Read config yaml file
-with open('./streamlit_app/config.yaml', 'r') as file:
+with open('config.yaml', 'r') as file:
     config = yaml.safe_load(file)
 title = config['streamlit']['title']
 subtitle = config['streamlit']['subtitle']
