@@ -3,7 +3,6 @@ import requests
 import yaml
 from dotenv import load_dotenv
 import random
-from msal_streamlit_authentication import msal_authentication
 import json
 import time
 import boto3
@@ -44,7 +43,7 @@ session = boto3.Session(
 )
 
 
-bedrock = session.client(service_name='bedrock-runtime')
+bedrock = session.client(service_name='bedrock-runtime', region_name='us-west-2')
 
 # Read config yaml file
 with open('./streamlit_app/config.yaml', 'r') as file:
