@@ -3,9 +3,9 @@ streamlit:
   title: "PDF Reasoning Tester Thing"
   subtitle: "If you upload a PDF here it'll parse it and use it to answer your question, otherwise it'll just answer your question."
   tab_title: "LLM bot"
-  logo: "./streamlit_app/images/AHEAD_logo.png"
-  page_icon: "./streamlit_app/images/Microsoft_logo.png"
+  logo: "./images/AHEAD_logo.png"
+  page_icon: "./images/Microsoft_logo.png"
   avatar: "👾"
-  about: "Ian and Ben"
+  about:
 azure:
   dummy: "test"
