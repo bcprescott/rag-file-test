@@ -23,7 +23,7 @@ footer {visibility: hidden;}
 st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
 
 with st.sidebar:
-    awsk = st.text_input("AWS API Key", key="AWS Key", type="password")
+    awsk = st.text_input("AWS Key", key="AWS Key", type="password")
     aws_key = st.text_input("AWS Secret", key="AWS Secret", type="password")
     uploaded_file = st.file_uploader("Choose a PDF file")
 
