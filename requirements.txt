@@ -1,0 +1,11 @@
+openai
+python-dotenv
+streamlit
+requests
+pyyaml
+azure-search-documents
+msal
+msal-streamlit-authentication
+azure-cosmos
+streamlit-feedback
+snowflake
